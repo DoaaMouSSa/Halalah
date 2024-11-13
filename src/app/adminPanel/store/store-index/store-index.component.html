@@ -1,0 +1,65 @@
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-capitalize text-center text-danger">Stores Data</h4>
+        <div class="row">
+          <div class="col-md-3">
+          <a class="btn btn-primary" [routerLink]="['/dashboard/store/create']">New Store</a>
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+        <input type="text" id="search" class="form-control" placeholder="Search by name">
+      </div>
+      </div>
+<br>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <!-- <th>#</th> -->
+              <th> Arabic Name </th>
+              <th> English Name </th>
+              <th> Image </th>
+              <th scope="col">Update</th>
+              <th scope="col">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let store of stores">
+              <!-- <td>{{ store.id }}</td> -->
+              <td>{{ store.arName }}</td>
+              <td>{{ store.enName }}</td>
+              <td>
+                <img [src]="store.image" alt="{{ store.enName }}" />
+              </td>
+              <td>  <button class="btn btn-success btn-sm" >Edit</button></td>
+              <td>  <button class="btn btn-danger btn-sm" (click)="goToDeleteData(store.id)">Delete</button>
+                <i class="fa-regular fa-circle-xmark"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  <!-- Pagination Controls -->
+<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <ul class="pagination">
+      <li class="page-item">
+        <button class="btn btn-primary btn-sm" [disabled]="pageNumber === 1" (click)="changePage(pageNumber - 1)">Previous</button>
+    </li>
+    <p class="text-danger m-1"><b>Page {{ pageNumber }} of {{ totalPages }}</b></p>
+
+      <li class="page-item">
+        <button class="btn btn-primary btn-sm" [disabled]="pageNumber === totalPages" (click)="changePage(pageNumber + 1)">Next</button>
+    </li>
+    </ul>
+  </nav>
+  
+      
+    </div>
+  </div>
+
+  <div *ngIf="stores.length === 0">
+    <p>No stores found.</p>
+  </div>
+  

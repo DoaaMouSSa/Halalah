@@ -1,0 +1,39 @@
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Create Banner</h4>
+        <p class="card-description"> New Banner </p>
+    <form (ngSubmit)="onSubmit()" #bannerForm="ngForm" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+          <label for="image">Image</label>
+          <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)">
+        </div>
+      </div>
+      <div class="col-md-6">
+      <div class="form-group">
+        <label for="link">Link</label>
+        <input type="text" id="link" name="link" class="form-control"  [(ngModel)]="banner.link" #name="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    <div class="form-group">
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" alt="Image preview" width="200">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+
+   
+  </div>
+</div>
+      <button type="submit" class="btn btn-gradient-danger me-2">Save</button>
+      <button class="btn btn-light" (click)="cancel()">Cancel</button>  
+    </form>
+  </div>
+  </div>
+  </div>

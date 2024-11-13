@@ -1,0 +1,49 @@
+<div class="col-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Update Category</h4>
+      <p class="card-description"> Edit Category Data</p>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6">
+    
+      <div class="form-group">
+        <label for="arName">arabic Name</label>
+        <input type="text" id="arName"class="form-control"
+        formControlName="arName">
+        <div *ngIf="categoryForm.get('arName')?.invalid && categoryForm.get('arName')?.touched" class="text-danger">Product name is required.</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="enName">english Name</label>
+        <input type="text" id="enName"class="form-control"
+        formControlName="enName">
+        <div *ngIf="categoryForm.get('enName')?.invalid && categoryForm.get('enName')?.touched" class="text-danger">Product name is required.</div>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
+       
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" alt="Image preview" width="200">
+      </div>
+    </div>
+  </div>
+
+      <button type="submit" class="btn btn-danger">Save Changes</button>
+      <button class="btn btn-light" (click)="cancel()">Cancel</button>
+
+    </form>
+  </div>
+</div>
+</div>

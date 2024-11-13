@@ -1,0 +1,53 @@
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Send Notification</h4>
+        <p class="card-description"> Push New Notification </p>
+    <form (ngSubmit)="onSubmit()" #notificatinForm="ngForm">
+        <div class="row">
+          <div class="col-md-6">
+        <div class="form-group">
+          <label for="arTitle">Arabic Title</label>
+          <input type="text" id="arTitle" name="arTitle" class="form-control" [(ngModel)]="notification.arTitle" #name="ngModel">
+        </div>
+      </div>
+      <div class="col-md-6">
+  
+        <div class="form-group">
+          <label for="enTitle">English Title</label>
+          <input type="text" id="enTitle" name="enTitle" class="form-control" [(ngModel)]="notification.enTitle" #name="ngModel">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+    <div class="form-group">
+      <label for="arBody">Arabic Message</label>
+      <input type="text" id="arBody" name="arBody" class="form-control" [(ngModel)]="notification.arBody" #name="ngModel">
+    </div>
+  </div>
+  <div class="col-md-6">
+
+    <div class="form-group">
+      <label for="enBody">English Message</label>
+      <input type="text" id="enBody" name="enBody" class="form-control" [(ngModel)]="notification.enBody" #name="ngModel">
+    </div>
+  </div>
+</div>
+    <!-- <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" class="form-control" [(ngModel)]="notification.subject" #name="ngModel">
+        </div>
+      </div>
+
+    </div> -->
+
+    <button type="submit" class="btn btn-gradient-danger me-2" [disabled]="notificatinForm.invalid">Push</button>
+    <button class="btn btn-light">Cancel</button>  </form>
+  </div>
+  </div>
+  </div> 
+  

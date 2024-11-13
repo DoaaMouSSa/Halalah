@@ -1,0 +1,43 @@
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Update Banner</h4>
+        <p class="card-description"> Edit Banner Data</p>
+      <form [formGroup]="bannerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+      
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
+      </div>
+          </div>
+      <div class="col-md-6">
+        <div class="form-group">
+
+        <label for="link">Link</label>
+        <input type="text" id="link"class="form-control"
+        formControlName="link" required>
+      </div>
+         
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        <div class="form-group">
+            <div *ngIf="imagePreview" class="image-preview">
+                <img [src]="imagePreview" alt="Image preview" width="200">
+              </div>
+         
+        </div>
+      </div>
+   
+    </div>
+  
+        <button type="submit" class="btn btn-danger">Save Changes</button>
+        <button class="btn btn-light" (click)="cancel()">Cancel</button>
+  
+      </form>
+    </div>
+  </div>
+  </div>

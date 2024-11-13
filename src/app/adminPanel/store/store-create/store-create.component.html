@@ -1,0 +1,77 @@
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Create Store</h4>
+        <p class="card-description"> New Store </p>
+    <form (ngSubmit)="onSubmit()" #storeForm="ngForm" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6">
+     
+      <div class="form-group">
+        <label for="arName">Arabic Name</label>
+        <input type="text" id="arName" name="arName" class="form-control" [(ngModel)]="store.arName" #name="ngModel">
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="enName">English Name</label>
+        <input type="text" id="enName" name="enName" class="form-control" [(ngModel)]="store.enName" #name="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="arSmallDesc">Arabic Description</label>
+        <input type="text" id="arSmallDesc" name="arSmallDesc" class="form-control" [(ngModel)]="store.arSmallDesc" #name="ngModel">
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="enSmallDesc">English Description</label>
+        <input type="text" id="enSmallDesc" name="enSmallDesc" class="form-control" [(ngModel)]="store.enSmallDesc" #name="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="link">Link</label>
+        <input type="text" id="link" name="link" class="form-control" [(ngModel)]="store.link" #name="ngModel">
+      </div>
+    </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
+          </div>
+    
+    </div>
+
+  </div>
+<div class="row">
+  <div class="col-md-6">
+  <div class="form-group">
+    <label for="categoryIds">Categories</label>
+    <select id="categoryIds" name="categoryIds" class="form-control" multiple [(ngModel)]="store.categoryIds">
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.enName }}</option>
+    </select>
+  </div>
+</div>
+<div class="col-md-6">
+  <!-- Image preview -->
+  <div *ngIf="imagePreview" class="image-preview">
+    <img [src]="imagePreview" alt="Image preview" width="200">
+  </div>
+  </div>
+</div>
+
+      <button type="submit" class="btn btn-gradient-danger me-2" [disabled]="storeForm.invalid">Save</button>
+      <button class="btn btn-light">Cancel</button>  </form>
+  </div>
+  </div>
+  </div>

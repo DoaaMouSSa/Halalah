@@ -1,0 +1,73 @@
+<div class="page-header">
+    <h3 class="page-title">
+      <span class="page-title-icon bg-gradient-danger text-white me-2">
+        <i class="mdi mdi-home"></i>
+      </span> Dashboard
+    </h3>
+  
+  </div>
+  
+    <!-- Stats Section -->
+    <div class="row" >
+      <div class="col-md-4">
+        <div class="p-3 mb-4 d-flex justify-content-start align-items-center bg-white" style="border-radius:5px">
+          <div class="image-content">
+            <img src="assets/sale-info/sales.png" class="img-fluid"/>
+          </div>
+          <div class="text-content ms-3">
+            <p class="mb-0">Coupons</p>
+            <p class="mb-0" style="color:grey" *ngIf="data">{{ data.coupon.count }}</p>
+            <p class="mb-0" style="color:orangered" *ngIf="data">{{ data.coupon.percentage }} % Current Month</p>
+          </div>
+        </div>
+  
+  
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 mb-4 d-flex justify-content-start align-items-center bg-white" style="border-radius:5px">
+          <div class="image-content">
+            <img src="assets/sale-info/customers.png" class="img-fluid"/>
+          </div>
+          <div class="text-content ms-3">
+          <p class="mb-0">Users</p>
+          <p class="mb-0" style="color:grey" *ngIf="data">{{ data.user.count }}</p>
+          <p class="mb-0" style="color:orangered" *ngIf="data">{{ data.user.percentage }} % Current Month</p>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-4">
+        <div class="p-3 mb-4 d-flex justify-content-start align-items-center bg-white" style="border-radius:5px">
+          <div class="image-content">
+            <img src="assets/sale-info/avg-revenue.png" class="img-fluid"/>
+          </div>
+          <div class="text-content ms-3">
+          <p class="mb-0">Stores</p>
+          <p class="mb-0" style="color:grey" *ngIf="data">{{ data.store.count }}</p>
+          <p class="mb-0" style="color:orangered" *ngIf="data"> {{ data.store.percentage }} % Current Month</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="clearfix">
+              <h4 class="card-title float-left">Visit And Sales Statistics</h4>
+              <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
+            </div>
+            <canvas id="visit-sale-chart" class="mt-4"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Traffic Sources</h4>
+            <canvas id="traffic-chart"></canvas>
+            <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
