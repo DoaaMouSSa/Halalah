@@ -9,40 +9,36 @@ export class CategoryService {
   private apiUrl = environment.apiUrl;
   constructor(private _http: HttpClient) {}
   getData() : Observable<any>{
-    const headers = new HttpHeaders({
-      
-    });  
     const url = `${this.apiUrl}Category/Get`;
 
-  return  this._http.get<any>(url,{headers});
+  return  this._http.get<any>(url);
   }
   getByName(name: string): Observable<any> {
-    const Username = '11195296';
-    const Password = '60-dayfreetrial';
-    const encodedCredentials = btoa(`${Username}:${Password}`);
+    const url = `${this.apiUrl}Category/Get`;
+
    
       return this._http.get<any>("/api/Category/GetByName?name="+name);
     }
   //create 
     //add
     postData(data: any): Observable<any> {
-    
-      return this._http.post<any>("/api/Category/Add", data);
+      const url = `${this.apiUrl}Category/Add`;
+      return this._http.post<any>(url, data);
     }
       //get by id
       GetById(id:string): Observable<any> {
-      
-        return this._http.get<any>("/api/Category/GetById?id="+id);
+        const url = `${this.apiUrl}Category/GetById?id=`+id;
+        return this._http.get<any>(url);
       }
      //update
     updateData(id:string,data: any): Observable<any> {
-    
-      return this._http.patch<any>("/api/Category/Update?id="+id, data);
+      const url = `${this.apiUrl}Category/Update?id=`+id;
+      return this._http.patch<any>(url, data);
     }
   
      //delete
      deleteData(id: number): Observable<void> {
-    
-      return this._http.delete<void>("/api/Category/Delete?id="+id);
+      const url = `${this.apiUrl}Category/Delete?id=`+id;
+      return this._http.delete<void>(url);
     }
 }
