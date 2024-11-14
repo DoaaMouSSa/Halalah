@@ -31,6 +31,7 @@ export class LoginComponent {
           }
         },
         error => {
+          this.message = 'Login failed. Please check your userName or Password.';
           console.error('Registration error:', error);
           // Handle registration error
         }
