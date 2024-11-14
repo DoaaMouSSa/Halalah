@@ -11,7 +11,7 @@ export class StatesService {
   constructor(private _http: HttpClient) {}
 
   getData() : Observable<any>{
-    const url = `${this.apiUrl}/Auth/Login`;
+    const url = `${this.apiUrl}Statistics/Get`;
     console.log(url)
 
   return  this._http.get<any>(url);
