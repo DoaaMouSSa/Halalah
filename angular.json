@@ -38,7 +38,7 @@
             ],
             "styles": [
               
-              "/src/assets/vendors/mdi/css/materialdesignicons.min.css",
+              "src/assets/vendors/mdi/css/materialdesignicons.min.css",
               "src/assets/vendors/css/vendor.bundle.base.css",
               "src/assets/css/style.css"
             ],

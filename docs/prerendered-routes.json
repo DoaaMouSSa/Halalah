@@ -1,0 +1,20 @@
+{
+  "routes": [
+    "/",
+    "/dashboard",
+    "/dashboard/banner",
+    "/dashboard/banner/create",
+    "/dashboard/category",
+    "/dashboard/category/create",
+    "/dashboard/coupon",
+    "/dashboard/coupon/create",
+    "/dashboard/coupon/removed",
+    "/dashboard/notification",
+    "/dashboard/notification/create",
+    "/dashboard/offer",
+    "/dashboard/offer/create",
+    "/dashboard/store",
+    "/dashboard/store/create",
+    "/login"
+  ]
+}

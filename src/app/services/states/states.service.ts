@@ -11,6 +11,6 @@ export class StatesService {
 
   getData() : Observable<any>{
 
-  return  this._http.get<any>('/api/Statistics/Get');
+  return  this._http.get<any>('Statistics/Get');
   }
 }

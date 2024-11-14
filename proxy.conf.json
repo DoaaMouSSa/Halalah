@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://worldcoupons-001-site1.ltempurl.com",
+    "target": "https://worldcoupons-001-site1.ltempurl.com/api/",
     "secure": false
   }
 }
