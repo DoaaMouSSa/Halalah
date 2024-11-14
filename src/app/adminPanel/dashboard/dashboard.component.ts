@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit{
         // Check and assign the payload if it exists
         if (response.result && response.result.payload) {
           this.data = response.result.payload;
+          console.log(this.data)
         } else {
           console.warn("Payload data is not available in response");
         }

@@ -9,19 +9,19 @@ export class CategoryService {
   private apiUrl = environment.apiUrl;
   constructor(private _http: HttpClient) {}
   getData() : Observable<any>{
-    // Username and password for Basic Authentication
-  
-  return  this._http.get<any>('/api/Category/Get');
+    const headers = new HttpHeaders({
+      
+    });  
+    const url = `${this.apiUrl}Category/Get`;
+
+  return  this._http.get<any>(url,{headers});
   }
   getByName(name: string): Observable<any> {
     const Username = '11195296';
     const Password = '60-dayfreetrial';
     const encodedCredentials = btoa(`${Username}:${Password}`);
-    const headers = new HttpHeaders({
-       'Accept': 'application/json',
-       'Authorization': `Basic ${encodedCredentials}`,
-    });
-      return this._http.get<any>("/api/Category/GetByName?name="+name,{headers});
+   
+      return this._http.get<any>("/api/Category/GetByName?name="+name);
     }
   //create 
     //add
