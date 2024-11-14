@@ -8,11 +8,11 @@ import { environment } from '../../../environments/environment.prod';
 })
 export class StatesService {
   private apiUrl = environment.apiUrl;
-
   constructor(private _http: HttpClient) {}
 
   getData() : Observable<any>{
-    const url = `${this.apiUrl}Auth/Login`;
+    const url = `${this.apiUrl}/Auth/Login`;
+    console.log(url)
 
   return  this._http.get<any>(url);
   }

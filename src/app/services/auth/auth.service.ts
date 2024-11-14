@@ -24,7 +24,7 @@ export class AuthService {
    
     private tokenSubject : BehaviorSubject<string | null> =  new BehaviorSubject< string | null>(null);
     login(userData: any): Observable<any>{
-      const url = `${this.apiUrl}Auth/Login`;
+      const url = `${this.apiUrl}/Auth/Login`;
         return this._http.post<any>(url, userData).pipe(tap(res =>{
         const token = res
         if(token){
