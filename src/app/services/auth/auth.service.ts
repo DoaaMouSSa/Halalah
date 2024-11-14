@@ -30,7 +30,6 @@ export class AuthService {
         if(token){
           localStorage.setItem('token', token);
           this.tokenSubject.next(token);
-          console.log('Decoded Token:', token);
         }
      }));
 

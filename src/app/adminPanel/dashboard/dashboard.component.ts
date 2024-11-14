@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatesService } from '../../services/states/states.service';
+import { StatesService } from '../../../../docs/states.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
