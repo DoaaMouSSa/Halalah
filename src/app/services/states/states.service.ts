@@ -7,10 +7,13 @@ import { environment } from '../../../environments/environment.prod';
   providedIn: 'root'
 })
 export class StatesService {
+  private apiUrl = environment.apiUrl;
+
   constructor(private _http: HttpClient) {}
 
   getData() : Observable<any>{
+    const url = `${this.apiUrl}Auth/Login`;
 
-  return  this._http.get<any>('Statistics/Get');
+  return  this._http.get<any>(url);
   }
 }
