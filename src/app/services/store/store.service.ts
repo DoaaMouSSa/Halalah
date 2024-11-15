@@ -7,11 +7,13 @@ import { environment } from '../../../environments/environment.prod';
   providedIn: 'root'
 })
 export class StoreService {
+  private apiUrl = environment.apiUrl;
 
   constructor(private _http: HttpClient) {}
 
   getData(pageNumber: number, pageSize: number) : Observable<any>{
-   
+    const url = `${this.apiUrl}Store/GetByPageNumber`;
+
     const body = {
       pageNumber: pageNumber,
       pageSize: pageSize,
@@ -19,28 +21,30 @@ export class StoreService {
       filteredDiscount: false,
       filteredLatest: false
     };
-    return this._http.post<any>(`api/Store/GetByPageNumber`, body);
+    return this._http.post<any>(url, body);
   }
   //create 
     //add
     postData(data: any): Observable<any> {
- 
-      return this._http.post<any>(`api/Store/Add`, data);
+      const url = `${this.apiUrl}Store/Add`;
+
+      return this._http.post<any>(url, data);
     }
       //get by id
       GetById(id:string): Observable<any> {
-   
-        return this._http.get<any>(`api/Store/GetById?id=`+id);
+        const url = `${this.apiUrl}Store/GetById?id=`+id;
+        return this._http.get<any>(url);
       }
      //update
     updateData(id:string,data: any): Observable<any> {
-    
-      return this._http.put<any>(`api/Store/Update?id=`+id, data);
+      const url = `${this.apiUrl}Store/Update?id=`+id;
+
+      return this._http.put<any>(url, data);
     }
   
      //delete
      deleteData(id: number): Observable<void> {
-   
-      return this._http.delete<void>(`api/Store/Delete?id=`+id);
+      const url = `${this.apiUrl}Store/Delete?id=`+id;
+      return this._http.delete<void>(url);
     }
 }

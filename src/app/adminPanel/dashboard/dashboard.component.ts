@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StatesService } from '../../../../docs/states.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { StatesService } from '../../services/states/states.service';
 
 @Component({
   selector: 'app-dashboard',
