@@ -11,36 +11,41 @@ export class CouponService {
   constructor(private _http: HttpClient) {}
 
   getData() : Observable<any>{
- 
-  return  this._http.get<any>('/api/Coupon/Get');
+    const url = `${this.apiUrl}Coupon/Get`;
+
+  return  this._http.get<any>(url);
   }
   getDataRemoved() : Observable<any>{
- 
-  return  this._http.get<any>('/api/Coupon/GetDeletedCoupons');
+    const url = `${this.apiUrl}Coupon/GetDeletedCoupons`;
+
+  return  this._http.get<any>(url);
   }
   //create 
     //add
     postData(data: any): Observable<any> {
-      return this._http.post<any>("/api/Coupon/Add", data);
+      const url = `${this.apiUrl}Coupon/Add`;
+      return this._http.post<any>(url, data);
     }
       //get by id
       GetById(id:string): Observable<any> {
-        return this._http.get<any>("/api/Coupon/GetById?id="+id);
+        const url = `${this.apiUrl}Coupon/GetById?id=`+id;
+        return this._http.get<any>(url);
       }
      //update
     updateData(id:string,data: any): Observable<any> {
-      return this._http.put<any>("/api/Coupon/Update?id="+id, data);
+      const url = `${this.apiUrl}Coupon/Update?id=`+id;
+      return this._http.put<any>(url, data);
     }
   
      //delete
      deleteData(id: number): Observable<void> {
-
-      return this._http.delete<void>("/api/Coupon/Delete?id="+id);
+      const url = `${this.apiUrl}Coupon/Delete?id=`+id;
+      return this._http.delete<void>(url);
     }
       //remove delete
       removeDeleteData(id: number): Observable<void> {
-    
-        return this._http.put<void>("/api/Coupon/RemoveDelete?id="+id,{});
+        const url = `${this.apiUrl}Coupon/RemoveDelete?id=`+id;
+        return this._http.put<void>(url,{});
       }
 }
 
