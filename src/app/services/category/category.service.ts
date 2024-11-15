@@ -10,7 +10,6 @@ export class CategoryService {
   constructor(private _http: HttpClient) {}
   getData() : Observable<any>{
     const url = `${this.apiUrl}Category/Get`;
-console.log(url)
   return  this._http.get<any>(url);
   }
   getByName(name: string): Observable<any> {
