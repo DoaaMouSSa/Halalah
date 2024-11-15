@@ -1,11 +1,12 @@
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
-
+  private apiUrl = environment.apiUrl;
   constructor(private _http: HttpClient) {}
   getData(pageNumber: number, pageSize: number) : Observable<any>{
    
@@ -13,28 +14,33 @@ export class OfferService {
       pageNumber: pageNumber,
       pageSize: pageSize,
     };
-    return this._http.post<any>(`api/Offer/Get`, body);
+    const url = `${this.apiUrl}Offer/Get`;
+
+    return this._http.post<any>(url, body);
   }
 
     //add
     postData(data: any): Observable<any> {
-  
-      return this._http.post<any>("/api/Offer/Add", data);
+      const url = `${this.apiUrl}Offer/Add`;
+
+      return this._http.post<any>(url, data);
     }
       //get by id
       GetById(id:string): Observable<any> {
-      
-        return this._http.get<any>("/api/Offer/GetById?id="+id);
+        const url = `${this.apiUrl}Offer/GetById?id=`+id;
+        return this._http.get<any>(url);
       }
      //update
     updateData(id:string,data: any): Observable<any> {
-    
-      return this._http.patch<any>("/api/Offer/Update?id="+id, data);
+      const url = `${this.apiUrl}Offer/Update?id=`+id;
+
+      return this._http.patch<any>(url,{});
     }
   
      //delete
      deleteData(id: number): Observable<void> {
-   
-      return this._http.delete<void>("/api/Offer/Delete?id="+id);
+      const url = `${this.apiUrl}Offer/Delete?id=`+id;
+
+      return this._http.delete<void>(url);
     }
 }
