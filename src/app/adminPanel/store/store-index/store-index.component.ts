@@ -23,7 +23,7 @@ export class StoreIndexComponent implements OnInit {
         this.stores = response.payload; // Get the list of stores
         // Calculate total pages if the API provides totalCount (you might need to adjust this)
         this.stores = response.payload; // Assuming this contains all stores
-        this.totalPages = 10   
+        this.totalPages = 100
          },
       (error) => {
         console.error('Error fetching data', error);
