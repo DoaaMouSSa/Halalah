@@ -16,8 +16,7 @@
               <th> Copies </th>
               <th> Likes </th>
               <th> Dislikes </th>
-              <th scope="col">Update</th>
-              <th scope="col">Remove</th>
+              <th colspan="2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -31,8 +30,8 @@
               <td>{{ item.numberOfLikes }}</td>
               <td>{{ item.numberOfDisLikes }}</td>
 
-              <td>  <button class="btn btn-success btn-sm" (click)="goToUpdatedPage(item.id)">Edit</button></td>
-              <td>  <button class="btn btn-danger btn-sm" (click)="goToDeleteData(item.id)">Delete</button></td>
+              <td>  <i class="mdi mdi-pencil menu-icon text-success" style="cursor: pointer;" (click)="goToUpdatedPage(item.id)"></i></td>
+              <td>  <i class="mdi mdi-delete menu-icon text-danger" style="cursor: pointer;" (click)="goToDeleteData(item.id)"></i></td>
             </tr>
           </tbody>
         </table>
