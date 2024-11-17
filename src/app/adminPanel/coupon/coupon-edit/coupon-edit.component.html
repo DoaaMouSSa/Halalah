@@ -1,1 +1,76 @@
-<p>coupon-edit works!</p>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Update Coupon</h4>
+        <p class="card-description"> Edit Coupon Details </p>
+        <form (ngSubmit)="onSubmit()" #couponForm="ngForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="code">Code</label>
+                <input type="text" id="code" name="code" class="form-control" [(ngModel)]="coupon.code" #name="ngModel">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="discount">Discount</label>
+                <input type="number" id="discount" name="discount" class="form-control" [(ngModel)]="coupon.discount" #name="ngModel">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="arSmallDesc">Arabic Description</label>
+                <input type="text" id="arSmallDesc" name="arSmallDesc" class="form-control" [(ngModel)]="coupon.arSmallDesc" #name="ngModel">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="enSmallDesc">English Description</label>
+                <input type="text" id="enSmallDesc" name="enSmallDesc" class="form-control" [(ngModel)]="coupon.enSmallDesc" #name="ngModel">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="link">Link</label>
+                <input type="text" id="link" name="link" class="form-control" [(ngModel)]="coupon.link" #name="ngModel">
+              </div>
+            </div>
+            <div class="col-md-6"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="storeId">Stores</label>
+                <select id="storeId" name="storeId" class="form-control" [(ngModel)]="coupon.storeId" #name="ngModel" (change)="onStoreChange($event)">
+                  <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="categoryId">Categories</label>
+                <select id="categoryId" name="categoryId" class="form-control" [(ngModel)]="coupon.categoryId" #name="ngModel">
+                  <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.enName }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="isActive">Is Active</label>
+                <input type="checkbox" id="isActive" name="isActive" [(ngModel)]="coupon.isActive" #name="ngModel">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-gradient-danger me-2" [disabled]="couponForm.invalid">Save</button>
+          <button class="btn btn-light" (click)="cancel()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

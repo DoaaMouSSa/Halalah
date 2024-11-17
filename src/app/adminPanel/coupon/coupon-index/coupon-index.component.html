@@ -16,7 +16,7 @@
               <th> Copies </th>
               <th> Likes </th>
               <th> Dislikes </th>
-              <!-- <th scope="col">Update</th> -->
+              <th scope="col">Update</th>
               <th scope="col">Remove</th>
             </tr>
           </thead>
@@ -31,7 +31,7 @@
               <td>{{ item.numberOfLikes }}</td>
               <td>{{ item.numberOfDisLikes }}</td>
 
-              <!-- <td>  <button class="btn btn-success btn-sm" (click)="goToUpdatedPage(item.id)">Edit</button></td> -->
+              <td>  <button class="btn btn-success btn-sm" (click)="goToUpdatedPage(item.id)">Edit</button></td>
               <td>  <button class="btn btn-danger btn-sm" (click)="goToDeleteData(item.id)">Delete</button></td>
             </tr>
           </tbody>

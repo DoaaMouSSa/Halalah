@@ -28,13 +28,13 @@ export class CouponService {
     }
       //get by id
       GetById(id:string): Observable<any> {
-        const url = `${this.apiUrl}Coupon/GetById?id=`+id;
+        const url = `${this.apiUrl}Coupon/GetByIdForUpdate?id=`+id;
         return this._http.get<any>(url);
       }
      //update
     updateData(id:string,data: any): Observable<any> {
       const url = `${this.apiUrl}Coupon/Update?id=`+id;
-      return this._http.put<any>(url, data);
+      return this._http.patch<any>(url, data);
     }
   
      //delete

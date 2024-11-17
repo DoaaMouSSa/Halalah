@@ -12,6 +12,10 @@ export class CategoryService {
     const url = `${this.apiUrl}Category/Get`;
   return  this._http.get<any>(url);
   }
+  getDataByStore(id:any) : Observable<any>{
+    const url = `${this.apiUrl}Category/GetByStore?id=`+id;
+  return  this._http.get<any>(url);
+  }
   getByName(name: string): Observable<any> {
     const url = `${this.apiUrl}Category/Get`;
 
