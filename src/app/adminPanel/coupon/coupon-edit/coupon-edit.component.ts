@@ -47,6 +47,10 @@ export class CouponEditComponent implements OnInit {
   loadCategories(storeId: number) {
     this._categoryService.getDataByStore(storeId).subscribe(data => {
       this.categories = data.payload;
+      if (this.categories.length > 0) {
+        // Set the first category as the default
+        this.coupon.categoryId = this.categories[0].id;
+      }
     });
   }
 

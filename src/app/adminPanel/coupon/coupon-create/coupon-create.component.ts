@@ -29,18 +29,31 @@ export class CouponCreateComponent implements OnInit{
   ) {}
   ngOnInit() {
     this.loadStores();
-    this.loadCategories();
   }
 
   loadStores() {
     this._storeService.getData(1, 1000).subscribe(data => {
       this.stores = data.payload;
+      if (this.stores.length > 0) {
+        // Set the first store's ID as default when creating a new coupon
+        this.coupon.storeId = this.stores[0].id;
+  
+      this.loadCategories(this.coupon.storeId); // Call method with the selected store ID
+      }
     });
   }
-  loadCategories() {
-    this._categoryService.getData().subscribe(data => {
+  loadCategories(storeId: number) {
+    this._categoryService.getDataByStore(storeId).subscribe(data => {
       this.categories = data.payload;
+      if (this.categories.length > 0) {
+        // Set the first category as the default
+        this.coupon.categoryId = this.categories[0].id;
+      }
     });
+  }
+  onStoreChange(event: any) {
+    const storeId = event.target.value;
+    this.loadCategories(storeId);
   }
   onSubmit() {
     this._couponService.postData(this.coupon).subscribe(

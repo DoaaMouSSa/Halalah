@@ -2,9 +2,15 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title text-capitalize text-center text-danger">Coupons Data</h4>
-        <a [routerLink]="['/dashboard/coupon/create']">New Coupon</a>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <a [routerLink]="['/dashboard/coupon/removed']">Removed Coupons</a>
+        <div class="row">
+        <div class="col-md-9">
+        <a class="btn btn-primary" [routerLink]="['/dashboard/coupon/create']">New Coupon</a>
+      </div>  
+      <div class="col-md-3">
+      
+      <a class="btn btn-dark" [routerLink]="['/dashboard/coupon/removed']">Removed Coupons</a>
+      </div>
+      </div>
         <table class="table table-striped">
           <thead>
             <tr>

@@ -50,7 +50,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="storeId">Stores</label>
-        <select  id="storeId" name="storeId" class="form-control" [(ngModel)]="coupon.storeId" #name="ngModel">
+        <select  id="storeId" name="storeId" class="form-control" [(ngModel)]="coupon.storeId" #name="ngModel" (change)="onStoreChange($event)">
           <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
 
         </select>
