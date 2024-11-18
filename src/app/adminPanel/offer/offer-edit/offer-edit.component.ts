@@ -2,70 +2,63 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../../services/category/category.service';
+import { OfferService } from '../../../services/offer/offer.service';
+import { StoreService } from '../../../services/store/store.service';
 
 @Component({
   selector: 'app-offer-edit',
   templateUrl: './offer-edit.component.html',
   styleUrl: './offer-edit.component.css'
 })
-export class OfferEditComponent {
-  
-  offerId!: number;
-  offerForm!: FormGroup;
+export class OfferEditComponent implements OnInit {
+  stores: any[] = [];
+  offerId: any | null = null; // To hold the current offer ID
+  offer = {
+    discount: 0,
+    isActive: '',
+    link: '',
+    code: '',
+    arSmallDesc: '',
+    enSmallDesc: '',
+    storeId: 0
+  };
   selectedFile!: File | null;
   imagePreview: string | null = null;
-  formSubmitted = false; // Track form submission for validation feedback
 
   constructor(
-    private fb: FormBuilder,
-    private _categoryService: CategoryService,
-    private _router: ActivatedRoute,
-    private router: Router
-  ) {
-    this.offerForm = this.fb.group({
-      link: ['',[Validators.required]],
+    private _offerService: OfferService,
+    private _storeService: StoreService,
+    private _route: ActivatedRoute,
+    private _router: Router
+  ) {}
+
+  ngOnInit() {
+    this.offerId = +this._route.snapshot.paramMap.get('id')!;
+    this.loadOffer();
+    this.loadStores();
+  }
+
+  loadStores() {
+    this._storeService.getData(1, 1000).subscribe(data => {
+      this.stores = data.payload;
     });
-    
   }
 
-  ngOnInit(): void {
-    const id = this._router.snapshot.paramMap.get('id'); // Get the id from the route
-    if (id) {
-      this.offerId = +id; // Safely convert the id to a number
-      this.fillForm();
-    } else {
-      console.error('No ID found in the route.');
-    }
-  }
-
-  fillForm() {
-    this._categoryService.GetById(this.offerId.toString()).subscribe(
-      category => {
-        if (category) {
-          this.offerForm.patchValue({
-            discount: category.payload.discount,
-            code: category.payload.enName,
-            link: category.payload.link,
-            expiry_date: category.payload.expiry_date,
-            isActive: category.payload.isActive,
-            storeId: category.payload.storeId,
-          });
-          this.imagePreview = category.payload.image; // Set the initial image preview
-        } else {
-          console.error('No data returned for the given ID');
+  loadOffer() {
+    if (this.offerId) {
+      this._offerService.GetById(this.offerId).subscribe(data => {
+        this.offer = data.payload;
+        if (data.payload.image) {
+          this.imagePreview = data.payload.image; // Assuming the API returns an image URL
         }
-      },
-      error => {
-        console.error('Error in GetById service:', error); // Log any service error
-      }
-    );
+      });
+    }
   }
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
-
       // Display a preview of the selected new image
       const reader = new FileReader();
       reader.onload = () => {
@@ -74,35 +67,35 @@ export class OfferEditComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
-
   onSubmit() {
-    this.formSubmitted = true; // Set to trigger validation feedback
-    if (this.offerForm.valid) {
-      const formData = new FormData();
+    const formData = new FormData();    
       formData.append('id', this.offerId.toString());
-      formData.append('link', this.offerForm.get('link')?.value);
-      formData.append('discount', this.offerForm.get('discount')?.value);
-      formData.append('code', this.offerForm.get('code')?.value);
-      formData.append('storeId', this.offerForm.get('storeId')?.value);
-      if (this.selectedFile) {
-        formData.append('image', this.selectedFile);
-      }
 
-      this._categoryService.updateData(this.offerId.toString(), formData).subscribe(
+    formData.append('discount', this.offer.discount.toString());
+    formData.append('arSmallDesc', this.offer.arSmallDesc);
+    formData.append('enSmallDesc', this.offer.enSmallDesc);
+    formData.append('isActive', this.offer.isActive);
+    formData.append('link', this.offer.link);
+    formData.append('code', this.offer.code);
+    formData.append('storeId', this.offer.storeId.toString());
+ // Add image only if a new file has been selected
+ // Add the selected image file
+ if (this.selectedFile) {
+  formData.append('image', this.selectedFile);
+}
+
+      this._offerService.updateData(this.offerId, formData).subscribe(
         response => {
-          console.log('Category updated successfully:', response);
-          this.router.navigate(['/dashboard/category']);
+          this._router.navigate(['/dashboard/offer']);
         },
         error => {
-          console.error('Error updating Category:', error);
+          console.error('Server error:', error);
         }
       );
-    } else {
-      console.log('Form is invalid');
-    }
+    
   }
 
   cancel() {
-    this.router.navigate(['/dashboard/category']); // Navigate to index on cancel
+    this._router.navigate(['/dashboard/offer']);
   }
 }

@@ -13,10 +13,11 @@ export class OfferCreateComponent implements OnInit{
 
   offer = {
     discount: 0,
-    expiry_date: '',
     isActive: '',
     link: '',
     code: '',
+    arSmallDesc:'',
+    enSmallDesc:'',
     storeId: 0,
   };
   selectedImage: File | null = null;
@@ -50,7 +51,8 @@ export class OfferCreateComponent implements OnInit{
 
     const formData = new FormData();
     formData.append('discount', this.offer.discount.toString());
-    formData.append('expiry_date', this.offer.expiry_date);
+    formData.append('arSmallDesc', this.offer.arSmallDesc);
+    formData.append('enSmallDesc', this.offer.enSmallDesc);
     formData.append('isActive', this.offer.isActive);
     formData.append('link', this.offer.link);
     formData.append('code', this.offer.code);

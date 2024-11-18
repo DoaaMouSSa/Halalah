@@ -13,11 +13,11 @@
       </div>
     </div>
     <div class="col-md-6">
-
       <div class="form-group">
-        <label for="expiry_date">Expiry Date</label>
-        <input type="date" id="expiry_date" name="expiry_date" class="form-control" [(ngModel)]="offer.expiry_date" #name="ngModel" required>
+        <label for="code">Code</label>
+        <input type="text" id="expiry_date" name="code" class="form-control" [(ngModel)]="offer.code" #name="ngModel">
       </div>
+     
     </div>
   </div>
   <div class="row">
@@ -29,33 +29,49 @@
   </div>
 </div>
 <div class="col-md-6">
-
   <div class="form-group">
-    <label for="code">Code</label>
-    <input type="text" id="expiry_date" name="code" class="form-control" [(ngModel)]="offer.code" #name="ngModel">
+    <label for="storeId">Stores</label>
+    <select  id="storeId" name="storeId" class="form-control" [(ngModel)]="offer.storeId" #name="ngModel" required>
+      <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
+
+    </select>
   </div>
+ 
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+
+<div class="form-group">
+  <label for="arSmallDesc">Arabic Description</label>
+  <input type="text" id="arSmallDesc" name="arSmallDesc" class="form-control" [(ngModel)]="offer.arSmallDesc" #name="ngModel">
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+  <label for="enSmallDesc">English Description</label>
+  <input type="text" id="enSmallDesc" name="enSmallDesc" class="form-control" [(ngModel)]="offer.enSmallDesc" #name="ngModel">
+</div>
+
 </div>
 </div>
   <div class="row">
     <div class="col-md-6">
-        <div class="form-group">
-          <label for="storeId">Stores</label>
-          <select  id="storeId" name="storeId" class="form-control" [(ngModel)]="offer.storeId" #name="ngModel" required>
-            <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
-  
-          </select>
-        </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
         </div>
 
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
+          <div *ngIf="imagePreview" class="image-preview">
+            <img [src]="imagePreview" alt="Image preview" width="200">
+          </div>
           </div>
     
     </div>
 
   </div>
+
 <div class="row">
   <div class="col-md-6">
     <div class="form-group">
@@ -63,12 +79,7 @@
         <input type="checkbox"  id="isActive" name="isActive" [(ngModel)]="offer.isActive" #name="ngModel">
       </div>
 </div>
-<div class="col-md-6">
- <!-- Image preview -->
- <div *ngIf="imagePreview" class="image-preview">
-    <img [src]="imagePreview" alt="Image preview" width="200">
-  </div>
-  </div>
+
 </div>
 <button type="submit" class="btn btn-gradient-danger me-2" [disabled]="offerForm.invalid">Save</button>
 <button class="btn btn-light">Cancel</button>  </form>

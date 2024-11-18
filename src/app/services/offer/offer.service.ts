@@ -34,7 +34,7 @@ export class OfferService {
     updateData(id:string,data: any): Observable<any> {
       const url = `${this.apiUrl}Offer/Update?id=`+id;
 
-      return this._http.patch<any>(url,{});
+      return this._http.patch<any>(url,data);
     }
   
      //delete

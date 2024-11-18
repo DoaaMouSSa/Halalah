@@ -1,49 +1,89 @@
 <div class="col-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">Update Offer</h4>
-      <p class="card-description"> Edit Offer Data</p>
-    <form [formGroup]="offerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-      <div class="row">
-        <div class="col-md-6">
-    
-      <div class="form-group">
-        <label for="discount">Discount</label>
-        <input type="number" id="discount"class="form-control"
-        formControlName="discount">
-        <div *ngIf="offerForm.get('discount')?.invalid && offerForm.get('discount')?.touched" class="text-danger">discount is required.</div>
-      </div>
-    </div>
-    <div class="col-md-6">
-
-      <div class="form-group">
-        <label for="link">Link</label>
-        <input type="text" id="link"class="form-control"
-        formControlName="link">
-        <div *ngIf="offerForm.get('link')?.invalid && offerForm.get('link')?.touched" class="text-danger">link is required.</div>
-      </div>
-    </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-      <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
-       
-      </div>
-    </div>
-    <div class="col-md-6">
-
-      <div *ngIf="imagePreview" class="image-preview">
-        <img [src]="imagePreview" alt="Image preview" width="200">
-      </div>
+      <h4 class="card-title">Edit Offer</h4>
+      <p class="card-description"> Update Offer Details </p>
+      <form (ngSubmit)="onSubmit()" #offerForm="ngForm" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="discount">Discount</label>
+              <input type="number" min="0" id="discount" name="discount" class="form-control"
+                [(ngModel)]="offer.discount" #discount="ngModel" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="code">Code</label>
+              <input type="text" id="code" name="code" class="form-control"
+                [(ngModel)]="offer.code" #code="ngModel">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="link">Link</label>
+              <input type="text" id="link" name="link" class="form-control"
+                [(ngModel)]="offer.link" #link="ngModel" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="storeId">Stores</label>
+              <select id="storeId" name="storeId" class="form-control"
+                [(ngModel)]="offer.storeId" #storeId="ngModel" required>
+                <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="arSmallDesc">Arabic Description</label>
+              <input type="text" id="arSmallDesc" name="arSmallDesc" class="form-control"
+                [(ngModel)]="offer.arSmallDesc" #arSmallDesc="ngModel">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="enSmallDesc">English Description</label>
+              <input type="text" id="enSmallDesc" name="enSmallDesc" class="form-control"
+                [(ngModel)]="offer.enSmallDesc" #enSmallDesc="ngModel">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input 
+              type="file" 
+              id="image" 
+              name="image" 
+              class="form-control" 
+              (change)="onFileChange($event)" 
+              required>        
+                </div>
+          </div>
+          <div class="col-md-6" *ngIf="imagePreview">
+            <div *ngIf="imagePreview" class="image-preview">
+              <img [src]="imagePreview" alt="Image preview" width="200">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="isActive">Is Active</label>
+              <input type="checkbox" id="isActive" name="isActive" [(ngModel)]="offer.isActive" #isActive="ngModel">
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gradient-danger me-2" [disabled]="offerForm.invalid">Update</button>
+        <button class="btn btn-light" (click)="cancel()">Cancel</button>
+      </form>
     </div>
   </div>
-
-      <button type="submit" class="btn btn-danger">Save Changes</button>
-      <button class="btn btn-light" (click)="cancel()">Cancel</button>
-
-    </form>
-  </div>
-</div>
 </div>
