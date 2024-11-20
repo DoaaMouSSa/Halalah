@@ -10,10 +10,15 @@ export class CouponService {
 
   constructor(private _http: HttpClient) {}
 
-  getData() : Observable<any>{
+  getData(pageNumber: number, pageSize: number,code:string) : Observable<any>{
     const url = `${this.apiUrl}Coupon/Get`;
 
-  return  this._http.get<any>(url);
+    const body = {
+      pageNumber: pageNumber,
+      pageSize: pageSize,
+      code: code, // Adjust this if needed
+    };
+    return this._http.post<any>(url, body);
   }
   getDataRemoved() : Observable<any>{
     const url = `${this.apiUrl}Coupon/GetDeletedCoupons`;

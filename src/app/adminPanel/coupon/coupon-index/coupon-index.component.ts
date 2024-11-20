@@ -9,7 +9,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CouponIndexComponent implements OnInit{
   data: any;
-
+  pageNumber: number = 1;
+  pageSize: number = 5;
+  totalPages: number = 1000; 
+  code:string="";
   constructor(private _couponService: CouponService,private _router:Router) {}
 
   ngOnInit(): void {
@@ -17,7 +20,7 @@ export class CouponIndexComponent implements OnInit{
   }
 
   loadData(): void {
-    this._couponService.getData().subscribe(
+    this._couponService.getData(this.pageNumber, this.pageSize,this.code).subscribe(
       (response: any) => { // Explicitly type response
         this.data = response.payload; // Assign the data to the property
       },
@@ -25,6 +28,16 @@ export class CouponIndexComponent implements OnInit{
         console.error('Error fetching data:', error);
       }
     );
+  }
+  searchData(){
+    this.pageNumber = 1;
+    this.loadData();
+  }
+  changePage(newPage: number): void {
+    if (newPage >= 1 && newPage <= this.totalPages) {
+      this.pageNumber = newPage;
+      this.loadData(); // Load data for the new page
+    }
   }
   goToUpdatedPage(id:number){
     this._router.navigate(['/dashboard/coupon/edit/'+id]);
