@@ -38,7 +38,7 @@ export class CouponEditComponent implements OnInit {
   }
 
   loadStores() {
-    this._storeService.getData(1, 1000).subscribe(data => {
+    this._storeService.getData(1, 1000,"").subscribe(data => {
       this.stores = data.payload;
       this.loadCategories(this.coupon.storeId); // Call method with the selected store ID
     });

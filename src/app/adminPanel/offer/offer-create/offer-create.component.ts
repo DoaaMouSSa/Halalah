@@ -28,7 +28,7 @@ export class OfferCreateComponent implements OnInit{
     this.loadStores();
   }
   loadStores() {
-    this._storeService.getData(1, 1000).subscribe(data => {
+    this._storeService.getData(1, 1000,"").subscribe(data => {
       this.stores = data.payload;
     });
   }

@@ -16,8 +16,8 @@
           </div>
           <div class="text-content ms-3">
             <p class="mb-0">Coupons</p>
-            <p class="mb-0" style="color:grey" *ngIf="data">{{ data.coupon.count }}</p>
-            <p class="mb-0" style="color:orangered" *ngIf="data">{{ data.coupon.percentage }} % Current Month</p>
+            <p class="mb-0" style="color:orangered;font-weight: 800" *ngIf="data">{{ data.coupon.count }}</p>
+            <p class="mb-0" style="color:gray" *ngIf="data">{{ data.coupon.percentage }} % Current Month</p>
           </div>
         </div>
   
@@ -30,8 +30,8 @@
           </div>
           <div class="text-content ms-3">
           <p class="mb-0">Users</p>
-          <p class="mb-0" style="color:grey" *ngIf="data">{{ data.user.count }}</p>
-          <p class="mb-0" style="color:orangered" *ngIf="data">{{ data.user.percentage }} % Current Month</p>
+          <p class="mb-0" style="color:orangered;font-weight: 800" *ngIf="data">{{ data.user.count }}</p>
+          <p class="mb-0" style="color:gray" *ngIf="data">{{ data.user.percentage }} % Current Month</p>
         </div>
       </div>
     </div>
@@ -42,8 +42,8 @@
           </div>
           <div class="text-content ms-3">
           <p class="mb-0">Stores</p>
-          <p class="mb-0" style="color:grey" *ngIf="data">{{ data.store.count }}</p>
-          <p class="mb-0" style="color:orangered" *ngIf="data"> {{ data.store.percentage }} % Current Month</p>
+          <p class="mb-0" style="color:orangered;font-weight: 800;" *ngIf="data">{{ data.store.count }}</p>
+          <p class="mb-0" style="color:gray" *ngIf="data"> {{ data.store.percentage }} % Current Month</p>
         </div>
       </div>
       </div>

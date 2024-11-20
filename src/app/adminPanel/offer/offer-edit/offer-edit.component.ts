@@ -39,7 +39,7 @@ export class OfferEditComponent implements OnInit {
   }
 
   loadStores() {
-    this._storeService.getData(1, 1000).subscribe(data => {
+    this._storeService.getData(1, 1000,"").subscribe(data => {
       this.stores = data.payload;
     });
   }

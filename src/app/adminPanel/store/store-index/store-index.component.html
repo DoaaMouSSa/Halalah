@@ -11,7 +11,9 @@
 
         </div>
         <div class="col-md-6">
-        <input type="text" id="search" class="form-control" placeholder="Search by name">
+        <input type="text" id="search" class="form-control" placeholder="Search by name"
+        [(ngModel)]="name"
+        (keyup)="searchData()">
       </div>
       </div>
 <br>
@@ -34,7 +36,7 @@
               <td>
                 <img [src]="store.image" alt="{{ store.enName }}" />
               </td>
-              <td>  <button class="btn btn-success btn-sm" >Edit</button></td>
+              <td>  <button class="btn btn-success btn-sm" (click)="goToUpdatedPage(store.id)">Edit</button></td>
               <td>  <button class="btn btn-danger btn-sm" (click)="goToDeleteData(store.id)">Delete</button>
                 <i class="fa-regular fa-circle-xmark"></i></td>
             </tr>

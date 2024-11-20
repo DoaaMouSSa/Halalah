@@ -32,7 +32,7 @@ export class CouponCreateComponent implements OnInit{
   }
 
   loadStores() {
-    this._storeService.getData(1, 1000).subscribe(data => {
+    this._storeService.getData(1, 1000,"").subscribe(data => {
       this.stores = data.payload;
       if (this.stores.length > 0) {
         // Set the first store's ID as default when creating a new coupon

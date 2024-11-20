@@ -1,1 +1,82 @@
-<p>store-edit works!</p>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Update Store</h4>
+        <p class="card-description"> Edit Store Data</p>
+      <form [formGroup]="storeForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+      
+        <div class="form-group">
+          <label for="arName">arabic Name</label>
+          <input type="text" id="arName"class="form-control"
+          formControlName="arName">
+          <div *ngIf="storeForm.get('arName')?.invalid && storeForm.get('arName')?.touched" class="text-danger">name is required.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+  
+        <div class="form-group">
+          <label for="enName">english Name</label>
+          <input type="text" id="enName"class="form-control"
+          formControlName="enName">
+          <div *ngIf="storeForm.get('enName')?.invalid && storeForm.get('enName')?.touched" class="text-danger">name is required.</div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="arSmallDesc">Arabic Description</label>
+            <input type="text" id="arSmallDesc" name="arSmallDesc" class="form-control" formControlName="arSmallDesc">
+          </div>
+        </div>
+        <div class="col-md-6">
+    
+          <div class="form-group">
+            <label for="enSmallDesc">English Description</label>
+            <input type="text" id="enSmallDesc" name="enSmallDesc" class="form-control" formControlName="enSmallDesc">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="link">Link</label>
+            <input type="text" id="link" name="link" class="form-control" formControlName="link">
+          </div>
+        </div>
+        <div class="col-md-6">
+    
+          <div class="form-group">
+            <label for="categoryIds">Categories</label>
+            <select id="categoryIds" name="categoryIds" class="form-control" multiple formControlName="categoryIds">
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.enName }}</option>
+              </select>
+              
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="file" id="image" name="image" class="form-control" (change)="onFileChange($event)" required>
+         
+        </div>
+      </div>
+      <div class="col-md-6">
+  
+        <div *ngIf="imagePreview" class="image-preview">
+          <img [src]="imagePreview" alt="Image preview" width="200">
+        </div>
+      </div>
+    </div>
+  
+        <button type="submit" class="btn btn-danger">Save Changes</button>
+        <button class="btn btn-light" (click)="cancel()">Cancel</button>
+  
+      </form>
+    </div>
+  </div>
+  </div>

@@ -11,16 +11,18 @@ export class StoreService {
 
   constructor(private _http: HttpClient) {}
 
-  getData(pageNumber: number, pageSize: number) : Observable<any>{
+  getData(pageNumber: number, pageSize: number, name:string) : Observable<any>{
     const url = `${this.apiUrl}Store/GetByPageNumber`;
 
     const body = {
-      pageNumber: pageNumber,
-      pageSize: pageSize,
-      categoryId: 0, // Adjust this if needed
-      filteredDiscount: false,
-      filteredLatest: false
+      pageNumber: pageNumber > 0 ? pageNumber : 1,  // Ensure pageNumber is >= 1
+      pageSize: pageSize > 0 ? pageSize : 5,        // Ensure pageSize is valid
+      categoryId: 0,  // Adjust if needed based on your logic
+      filteredDiscount: true,  // Adjust based on the filter logic
+      filteredLatest: true,    // Adjust based on the filter logic
+      name: name.trim() || ""  // Pass the actual name, ensure it's not empty
     };
+  
     return this._http.post<any>(url, body);
   }
   //create 
@@ -32,14 +34,14 @@ export class StoreService {
     }
       //get by id
       GetById(id:string): Observable<any> {
-        const url = `${this.apiUrl}Store/GetById?id=`+id;
-        return this._http.get<any>(url);
+        const url = `${this.apiUrl}Store/GetByIdForEdit?id=`+id;
+        return this._http.patch<any>(url,{});
       }
      //update
     updateData(id:string,data: any): Observable<any> {
-      const url = `${this.apiUrl}Store/Update?id=`+id;
+      const url = `${this.apiUrl}Store/Update`;
 
-      return this._http.put<any>(url, data);
+      return this._http.patch<any>(url, data);
     }
   
      //delete
