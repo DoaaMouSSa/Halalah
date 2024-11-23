@@ -18,8 +18,8 @@ export class StoreService {
       pageNumber: pageNumber > 0 ? pageNumber : 1,  // Ensure pageNumber is >= 1
       pageSize: pageSize > 0 ? pageSize : 5,        // Ensure pageSize is valid
       categoryId: 0,  // Adjust if needed based on your logic
-      filteredDiscount: true,  // Adjust based on the filter logic
-      filteredLatest: true,    // Adjust based on the filter logic
+      filteredDiscount: false,  // Adjust based on the filter logic
+      filteredLatest: false,    // Adjust based on the filter logic
       name: name.trim() || ""  // Pass the actual name, ensure it's not empty
     };
   
