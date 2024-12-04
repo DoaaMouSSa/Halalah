@@ -18,7 +18,7 @@ export class OfferCreateComponent implements OnInit{
     code: '',
     arSmallDesc:'',
     enSmallDesc:'',
-    storeId: 0,
+    storeId: '',
   };
   selectedImage: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;

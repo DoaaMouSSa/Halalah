@@ -12,7 +12,7 @@ export class CouponIndexComponent implements OnInit{
   pageNumber: number = 1;
   pageSize: number = 5;
   totalPages: number = 1000; 
-  code:string="";
+  name:string="";
   constructor(private _couponService: CouponService,private _router:Router) {}
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class CouponIndexComponent implements OnInit{
   }
 
   loadData(): void {
-    this._couponService.getData(this.pageNumber, this.pageSize,this.code).subscribe(
+    this._couponService.getData(this.pageNumber, this.pageSize,this.name).subscribe(
       (response: any) => { // Explicitly type response
         this.data = response.payload; // Assign the data to the property
       },

@@ -25,13 +25,13 @@
  
   <div class="form-group">
     <label for="link">Link</label>
-    <input type="text" id="link" name="link" class="form-control" [(ngModel)]="offer.link" #name="ngModel" required>
+    <input type="text" id="link" name="link" class="form-control" [(ngModel)]="offer.link" #name="ngModel">
   </div>
 </div>
 <div class="col-md-6">
   <div class="form-group">
     <label for="storeId">Stores</label>
-    <select  id="storeId" name="storeId" class="form-control" [(ngModel)]="offer.storeId" #name="ngModel" required>
+    <select  id="storeId" name="storeId" class="form-control" [(ngModel)]="offer.storeId" #name="ngModel">
       <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
 
     </select>

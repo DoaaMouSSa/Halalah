@@ -10,13 +10,13 @@ export class CouponService {
 
   constructor(private _http: HttpClient) {}
 
-  getData(pageNumber: number, pageSize: number,code:string) : Observable<any>{
+  getData(pageNumber: number, pageSize: number,name:string) : Observable<any>{
     const url = `${this.apiUrl}Coupon/Get`;
 
     const body = {
       pageNumber: pageNumber,
       pageSize: pageSize,
-      code: code, // Adjust this if needed
+      name: name, // Adjust this if needed
     };
     return this._http.post<any>(url, body);
   }
