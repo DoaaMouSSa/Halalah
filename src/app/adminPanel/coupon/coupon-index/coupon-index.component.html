@@ -35,7 +35,7 @@
           <tbody>
             <tr *ngFor="let item of data">
               <td><span class="text-danger text-bold">{{ item.code }}</span></td>
-              <td>{{ item.discount }}</td>
+              <td>{{ item.discount }} {{item.unit}}</td>
               <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{(item.link == null) ? "No Link": item.link }}</td>
               <td>{{ item.storeName }}</td>
               <td>{{ item.categoryName }}</td>

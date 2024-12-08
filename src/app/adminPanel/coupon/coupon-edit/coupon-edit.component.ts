@@ -14,6 +14,7 @@ export class CouponEditComponent implements OnInit {
   couponId: any; // ID of the coupon to update
   coupon = {
     code: '',
+    unit: '',
     discount: 0,
     arSmallDesc: '',
     enSmallDesc: '',

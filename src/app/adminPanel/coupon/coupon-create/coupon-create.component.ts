@@ -14,6 +14,7 @@ export class CouponCreateComponent implements OnInit{
   categories: any[] = [];  // Array to hold store data
   coupon = {
     code: '',
+    unit: '',
     discount: 0,
     arSmallDesc:'',
     enSmallDesc:'',

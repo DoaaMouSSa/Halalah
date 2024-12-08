@@ -7,14 +7,27 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
+                <label for="discount">Discount</label>
+                <input type="number" id="discount" name="discount" class="form-control" [(ngModel)]="coupon.discount" #name="ngModel">
+              </div>
+            </div>
+            <div class="col-md-6">
+            <label for="unit">Unit</label>
+                <input type="text" id="unit" name="unit" class="form-control" [(ngModel)]="coupon.unit" #name="ngModel">
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
                 <label for="code">Code</label>
                 <input type="text" id="code" name="code" class="form-control" [(ngModel)]="coupon.code" #name="ngModel">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="discount">Discount</label>
-                <input type="number" id="discount" name="discount" class="form-control" [(ngModel)]="coupon.discount" #name="ngModel">
+                <label for="link">Link</label>
+                <input type="text" id="link" name="link" class="form-control" [(ngModel)]="coupon.link" #name="ngModel">
+              
               </div>
             </div>
           </div>
@@ -32,15 +45,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="link">Link</label>
-                <input type="text" id="link" name="link" class="form-control" [(ngModel)]="coupon.link" #name="ngModel">
-              </div>
-            </div>
-            <div class="col-md-6"></div>
-          </div>
+      
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">

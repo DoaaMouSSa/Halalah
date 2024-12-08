@@ -9,7 +9,7 @@
             <div class="form-group">
               <label for="discount">Discount</label>
               <input type="number" min="0" id="discount" name="discount" class="form-control"
-                [(ngModel)]="offer.discount" #discount="ngModel" required>
+                [(ngModel)]="offer.discount" #discount="ngModel">
             </div>
           </div>
           <div class="col-md-6">
@@ -25,14 +25,14 @@
             <div class="form-group">
               <label for="link">Link</label>
               <input type="text" id="link" name="link" class="form-control"
-                [(ngModel)]="offer.link" #link="ngModel" required>
+                [(ngModel)]="offer.link" #link="ngModel">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="storeId">Stores</label>
               <select id="storeId" name="storeId" class="form-control"
-                [(ngModel)]="offer.storeId" #storeId="ngModel" required>
+                [(ngModel)]="offer.storeId" #storeId="ngModel" >
                 <option *ngFor="let store of stores" [value]="store.id">{{ store.enName }}</option>
               </select>
             </div>
@@ -64,7 +64,7 @@
               name="image" 
               class="form-control" 
               (change)="onFileChange($event)" 
-              required>        
+              >        
                 </div>
           </div>
           <div class="col-md-6" *ngIf="imagePreview">
