@@ -20,6 +20,7 @@ export class StoreCreateComponent implements OnInit{
     arSmallDesc: '',
     enSmallDesc: '',
     link: '',
+    order: '',
     categoryIds: [] as number[]
   };
   categories: Category[] = [];
@@ -61,6 +62,7 @@ export class StoreCreateComponent implements OnInit{
     formData.append('arSmallDesc', this.store.arSmallDesc);
     formData.append('enSmallDesc', this.store.enSmallDesc);
     formData.append('link', this.store.link);
+    formData.append('order', this.store.order);
     this.store.categoryIds.forEach((categoryId: number) => {
       formData.append('categoryIds', categoryId.toString());
     });

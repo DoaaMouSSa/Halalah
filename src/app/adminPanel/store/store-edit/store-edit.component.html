@@ -5,7 +5,7 @@
         <p class="card-description"> Edit Store Data</p>
       <form [formGroup]="storeForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
       
         <div class="form-group">
           <label for="arName">arabic Name</label>
@@ -14,13 +14,19 @@
           <div *ngIf="storeForm.get('arName')?.invalid && storeForm.get('arName')?.touched" class="text-danger">name is required.</div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
   
         <div class="form-group">
           <label for="enName">english Name</label>
           <input type="text" id="enName"class="form-control"
           formControlName="enName">
           <div *ngIf="storeForm.get('enName')?.invalid && storeForm.get('enName')?.touched" class="text-danger">name is required.</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="order">Order</label>
+          <input type="number" min="1" max="1000000" id="order" name="order" class="form-control" formControlName="order">
         </div>
       </div>
       </div>

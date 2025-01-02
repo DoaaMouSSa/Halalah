@@ -35,6 +35,7 @@ export class StoreEditComponent {
       arSmallDesc: [''],
       enSmallDesc: [''],
       link:[''],
+      order:[''],
       categoryIds: [[]] // Corrected name
     });
     
@@ -61,6 +62,7 @@ export class StoreEditComponent {
             enName: store.payload.enName,
             arSmallDesc:store.payload.arSmallDesc,
             enSmallDesc:store.payload.enSmallDesc,
+            order:store.payload.order,
             link:store.payload.link,
             categoryIds: store.payload.categoryIds, // Correct assignment
           });
@@ -106,6 +108,7 @@ export class StoreEditComponent {
       formData.append('arSmallDesc', this.storeForm.get('arSmallDesc')?.value);
       formData.append('enSmallDesc', this.storeForm.get('enSmallDesc')?.value);
       formData.append('link', this.storeForm.get('link')?.value);
+      formData.append('order', this.storeForm.get('order')?.value);
  // Append categoryIds as a comma-separated string or as individual fields
  const selectedCategoryIds = this.storeForm.get('categoryIds')?.value || [];
  selectedCategoryIds.forEach((id: number) => formData.append('categoryIds', id.toString()));      if (this.selectedFile) {
