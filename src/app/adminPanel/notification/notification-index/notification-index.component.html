@@ -17,10 +17,10 @@
           <tbody>
             <tr *ngFor="let item of data">
               <td><span class="text-danger text-bold">{{ item.enTitle }}</span></td>
-              <td>{{ item.enBody }}</td>
+              <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ item.enBody }}</td>
               <!-- <td>{{ item.id }}</td> -->
               <td><span class="text-danger text-bold">{{ item.arTitle }}</span></td>
-              <td>{{ item.arBody }}</td>
+              <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ item.arBody }}</td>
            
                         </tr>
           </tbody>

@@ -31,6 +31,7 @@ import { CouponRemovedComponent } from './adminPanel/coupon/coupon-removed/coupo
 import { OfferIndexComponent } from './adminPanel/offer/offer-index/offer-index.component';
 import { OfferCreateComponent } from './adminPanel/offer/offer-create/offer-create.component';
 import { OfferEditComponent } from './adminPanel/offer/offer-edit/offer-edit.component';
+import { StoreRemovedComponent } from './adminPanel/store/store-removed/store-removed.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { OfferEditComponent } from './adminPanel/offer/offer-edit/offer-edit.com
     OfferIndexComponent,
     OfferCreateComponent,
     OfferEditComponent,
+    StoreRemovedComponent,
   ],
   imports: [
     BrowserModule,

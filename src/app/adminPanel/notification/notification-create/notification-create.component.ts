@@ -27,5 +27,7 @@ export class NotificationCreateComponent{
       }
     );
   }
-
+  cancel() {
+    this._router.navigate(['/dashboard/notification']); // Navigate to index on cancel
+  }
       }

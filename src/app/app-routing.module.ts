@@ -22,6 +22,7 @@ import { CouponRemovedComponent } from './adminPanel/coupon/coupon-removed/coupo
 import { OfferIndexComponent } from './adminPanel/offer/offer-index/offer-index.component';
 import { OfferCreateComponent } from './adminPanel/offer/offer-create/offer-create.component';
 import { OfferEditComponent } from './adminPanel/offer/offer-edit/offer-edit.component';
+import { StoreRemovedComponent } from './adminPanel/store/store-removed/store-removed.component';
 
 const routes: Routes = [
  { path: '', component:MainComponent,children:[
@@ -30,9 +31,12 @@ const routes: Routes = [
      { path: 'dashboard/category', component: CategoryIndexComponent, canActivate: [authGuard] },
      { path: 'dashboard/category/create', component: CategoryCreateComponent, canActivate: [authGuard] },
      { path: 'dashboard/category/edit/:id', component: CategoryEditComponent, canActivate: [authGuard] },
+     //store
      { path: 'dashboard/store', component: StoreIndexComponent, canActivate: [authGuard] },
      { path: 'dashboard/store/create', component: StoreCreateComponent, canActivate: [authGuard] },
      { path: 'dashboard/store/edit/:id', component: StoreEditComponent , canActivate: [authGuard]},
+     { path: 'dashboard/store/removed', component: StoreRemovedComponent, canActivate: [authGuard] },
+//coupon
      { path: 'dashboard/coupon', component: CouponIndexComponent, canActivate: [authGuard] },
      { path: 'dashboard/coupon/removed', component: CouponRemovedComponent, canActivate: [authGuard] },
      { path: 'dashboard/coupon/create', component: CouponCreateComponent, canActivate: [authGuard] },

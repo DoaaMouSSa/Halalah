@@ -25,6 +25,20 @@ export class StoreService {
   
     return this._http.post<any>(url, body);
   }
+  getDataRemoved(pageNumber: number, pageSize: number, name:string) : Observable<any>{
+    const url = `${this.apiUrl}Store/GetRemovedStores`;
+    const body = {
+      pageNumber: pageNumber > 0 ? pageNumber : 1,  // Ensure pageNumber is >= 1
+      pageSize: pageSize > 0 ? pageSize : 5,        // Ensure pageSize is valid
+      name: name.trim() || ""  // Pass the actual name, ensure it's not empty
+    };
+  return  this._http.post<any>(url,body);
+  }
+    //remove delete
+    removeDeleteData(id: number): Observable<void> {
+      const url = `${this.apiUrl}Store/RemoveDelete?id=`+id;
+      return this._http.delete<void>(url);
+    }
   //create 
     //add
     postData(data: any): Observable<any> {

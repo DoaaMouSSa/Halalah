@@ -1,21 +1,21 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title text-capitalize text-center text-danger">Stores Data</h4>
+        <h4 class="card-title text-capitalize text-center text-danger">Removed Stores</h4>
         <div class="row">
           <div class="col-md-3">
           <a class="btn btn-primary" [routerLink]="['/dashboard/store/create']">New Store</a>
 
         </div>
-      
         <div class="col-md-6">
-        <input type="text" id="search" class="form-control" placeholder="Search by name"
-        [(ngModel)]="name"
-        (keyup)="searchData()">
-      </div>
+            <input type="text" id="search" class="form-control" placeholder="Search by name"
+            [(ngModel)]="name"
+            (keyup)="searchData()">
+          </div>
+       
       <div class="col-md-3">
       
-        <a class="btn btn-dark" [routerLink]="['/dashboard/store/removed']">Removed Stores</a>
+        <a class="btn btn-dark" [routerLink]="['/dashboard/store/']">All Stores</a>
         </div>
       </div>
 <br>
@@ -25,23 +25,20 @@
               <!-- <th>#</th> -->
               <th> Arabic Name </th>
               <th> English Name </th>
-              <th> Order </th>
               <th> Image </th>
-              <th colspan="2">Actions</th>
+              <th>On</th>
 
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let store of stores">
+            <tr *ngFor="let store of data">
               <!-- <td>{{ store.id }}</td> -->
               <td>{{ store.arName }}</td>
               <td>{{ store.enName }}</td>
-              <td>{{ store.order }}</td>
               <td>
                 <img [src]="store.image" alt="{{ store.enName }}" />
               </td>
-              <td>  <i class="mdi mdi-pencil menu-icon text-success" style="cursor: pointer;" (click)="goToUpdatedPage(store.id)"></i></td>
-              <td>  <i class="mdi mdi-delete menu-icon text-danger" style="cursor: pointer;" (click)="goToDeleteData(store.id)"></i></td>
+              <td>  <i class="mdi mdi-lightbulb-on menu-icon text-primary" style="cursor: pointer;" (click)="goToActivateData(store.id)"></i></td>
             </tr>
           </tbody>
         </table>
@@ -64,7 +61,7 @@
     </div>
   </div>
 
-  <div *ngIf="stores.length === 0">
+  <div *ngIf="data.length === 0">
     <p>No stores found.</p>
   </div>
   

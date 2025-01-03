@@ -15,6 +15,7 @@
     "/dashboard/offer/create",
     "/dashboard/store",
     "/dashboard/store/create",
+    "/dashboard/store/removed",
     "/login"
   ]
 }
