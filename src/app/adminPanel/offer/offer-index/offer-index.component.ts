@@ -25,8 +25,8 @@ export class OfferIndexComponent implements OnInit {
         this.offers = response.payload; // Get the list of stores
         // Calculate total pages if the API provides totalCount (you might need to adjust this)
         this.offers = response.payload; // Assuming this contains all stores
-        this.totalPages = 10   
-         },
+        this.totalPages = Math.ceil(response.dataCount/5) || 1000;  // Set total pages based on response
+      },
       (error) => {
         console.error('Error fetching data', error);
       }

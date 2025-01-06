@@ -23,6 +23,7 @@ import { OfferIndexComponent } from './adminPanel/offer/offer-index/offer-index.
 import { OfferCreateComponent } from './adminPanel/offer/offer-create/offer-create.component';
 import { OfferEditComponent } from './adminPanel/offer/offer-edit/offer-edit.component';
 import { StoreRemovedComponent } from './adminPanel/store/store-removed/store-removed.component';
+import { SearchIndexComponent } from './adminPanel/search/search-index/search-index.component';
 
 const routes: Routes = [
  { path: '', component:MainComponent,children:[
@@ -36,6 +37,9 @@ const routes: Routes = [
      { path: 'dashboard/store/create', component: StoreCreateComponent, canActivate: [authGuard] },
      { path: 'dashboard/store/edit/:id', component: StoreEditComponent , canActivate: [authGuard]},
      { path: 'dashboard/store/removed', component: StoreRemovedComponent, canActivate: [authGuard] },
+     //search
+     { path: 'dashboard/search', component: SearchIndexComponent, canActivate: [authGuard] },
+
 //coupon
      { path: 'dashboard/coupon', component: CouponIndexComponent, canActivate: [authGuard] },
      { path: 'dashboard/coupon/removed', component: CouponRemovedComponent, canActivate: [authGuard] },
