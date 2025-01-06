@@ -36,28 +36,29 @@ export class CouponIndexComponent implements OnInit{
     this.loadData();
   }
   reset() {
-    this._couponService.resetData().subscribe(
-      (response) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Data Reset Successfully',
-          text: 'The data has been reset!',
-          confirmButtonText: 'OK',
-        }).then(() => {
-          this.loadData(); // Reload data after the alert
-        });
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'An error occurred while resetting data.',
-          confirmButtonText: 'Retry',
-        });
-        console.error('Error:', error);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to reset the coupons data?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // If the user clicks "Yes"
+        this._couponService.resetData().subscribe(
+          (response) => {
+            this.loadData(); // Reload data
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
       }
-    );
+      // If the user clicks "Cancel", nothing happens
+    });
   }
+  
   
   changePage(newPage: number): void {
     if (newPage >= 1 && newPage <= this.totalPages) {

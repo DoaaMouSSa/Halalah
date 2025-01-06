@@ -13,6 +13,7 @@
     "/dashboard/notification/create",
     "/dashboard/offer",
     "/dashboard/offer/create",
+    "/dashboard/search",
     "/dashboard/store",
     "/dashboard/store/create",
     "/dashboard/store/removed",
