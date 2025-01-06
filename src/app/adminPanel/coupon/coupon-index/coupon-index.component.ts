@@ -25,6 +25,8 @@ export class CouponIndexComponent implements OnInit{
     this._couponService.getData(this.pageNumber, this.pageSize,this.name).subscribe(
       (response: any) => { // Explicitly type response
         this.data = response.payload; // Assign the data to the property
+        this.totalPages = Math.ceil(response.dataCount/5) || 1000;  // Set total pages based on response
+
       },
       (error: HttpErrorResponse) => { // Explicitly type error
         console.error('Error fetching data:', error);

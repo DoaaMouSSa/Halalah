@@ -25,7 +25,7 @@ export class StoreRemovedComponent implements OnInit{
       this._storeService.getDataRemoved(this.pageNumber, this.pageSize, this.name).subscribe(
         (response: any) => {  // Handle the response
           this.data = response.payload;  // Assign the stores data
-          this.totalPages = response.totalPages || 1000;  // Set total pages based on response
+          this.totalPages = Math.ceil(response.dataCount/5) || 1000;  // Set total pages based on response
         },
       (error: HttpErrorResponse) => { // Explicitly type error
         console.error('Error fetching data:', error);

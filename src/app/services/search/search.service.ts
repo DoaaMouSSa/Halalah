@@ -12,8 +12,8 @@ private apiUrl = environment.apiUrl;
 
   constructor(private _http: HttpClient) {}
 
-  getData(pageNumber: number, pageSize: number) : Observable<any>{
-    const url = `${this.apiUrl}Search/Get`;
+  getData(pageNumber: number, pageSize: number, name:string) : Observable<any>{
+    const url = `${this.apiUrl}Search/Get?name=`+name;
 
     const body = {
       pageNumber: pageNumber > 0 ? pageNumber : 1,  // Ensure pageNumber is >= 1
@@ -27,4 +27,9 @@ private apiUrl = environment.apiUrl;
     const url = `${this.apiUrl}Search/Delete?id=`+id;
     return this._http.delete<void>(url);
   }
+    //remove all
+    deleteAll(): Observable<void> {
+      const url = `${this.apiUrl}Search/DeleteAll`;
+      return this._http.delete<void>(url);
+    }
 }

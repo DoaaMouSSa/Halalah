@@ -19,7 +19,8 @@
         </div>
       </div>
 <br>
-        <table class="table table-striped">
+<div *ngIf="stores.length > 0">
+        <table class="table table-striped mb-3">
           <thead>
             <tr>
               <!-- <th>#</th> -->
@@ -45,7 +46,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
+        <br>
   <!-- Pagination Controls -->
 <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">
@@ -59,12 +60,11 @@
     </li>
     </ul>
   </nav>
-  
+</div>
+<div *ngIf="stores.length === 0" class="d-flex justify-content-center align-items-center">
+  <img src="assets/404/404.gif" style="object-fit: fill;" width="300px"/>
+</div> 
       
     </div>
   </div>
 
-  <div *ngIf="stores.length === 0">
-    <p>No stores found.</p>
-  </div>
-  
