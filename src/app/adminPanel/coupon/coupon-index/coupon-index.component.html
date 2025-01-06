@@ -7,7 +7,7 @@
         <a class="btn btn-primary" [routerLink]="['/dashboard/coupon/create']">New Coupon</a>
       </div>  
     
-      <div class="col-md-6">
+      <div class="col-md-3">
         <input type="text" id="search" class="form-control" placeholder="Search by Name"
         [(ngModel)]="name" 
         (keyup)="searchData()">
@@ -16,6 +16,10 @@
       
         <a class="btn btn-dark" [routerLink]="['/dashboard/coupon/removed']">Removed Coupons</a>
         </div>
+        <div class="col-md-3">
+      
+          <a class="btn btn-danger" (click)="reset()">Reset</a>
+          </div>
       </div>
       <br> <br>
         <table class="table table-striped">

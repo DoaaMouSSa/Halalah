@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CouponService } from '../../../services/coupon/coupon.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-coupon-index',
   templateUrl: './coupon-index.component.html',
@@ -33,6 +35,30 @@ export class CouponIndexComponent implements OnInit{
     this.pageNumber = 1;
     this.loadData();
   }
+  reset() {
+    this._couponService.resetData().subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Data Reset Successfully',
+          text: 'The data has been reset!',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          this.loadData(); // Reload data after the alert
+        });
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An error occurred while resetting data.',
+          confirmButtonText: 'Retry',
+        });
+        console.error('Error:', error);
+      }
+    );
+  }
+  
   changePage(newPage: number): void {
     if (newPage >= 1 && newPage <= this.totalPages) {
       this.pageNumber = newPage;

@@ -52,5 +52,10 @@ export class CouponService {
         const url = `${this.apiUrl}Coupon/RemoveDelete?id=`+id;
         return this._http.put<void>(url,{});
       }
+        //rest
+     resetData(): Observable<void> {
+      const url = `${this.apiUrl}Coupon/Reset`;
+      return this._http.patch<void>(url,{});
+    }
 }
 
